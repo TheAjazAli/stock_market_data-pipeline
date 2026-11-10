@@ -1,9 +1,5 @@
 # Stock Market Data Engineering Pipeline
 
-![Status](https://img.shields.io/badge/status-work%20in%20progress-orange)
-![Python](https://img.shields.io/badge/python-3.x-blue)
-![PostgreSQL](https://img.shields.io/badge/database-PostgreSQL-336791)
-
 An end-to-end data engineering project that builds a daily stock market data pipeline for Indian stock exchanges (NSE/BSE). It extracts historical stock data, validates it, stores it in PostgreSQL, and is being extended into an automated, cloud-based pipeline on AWS.
 
 The project is developed incrementally, starting with a local environment and gradually moving towards cloud deployment.
