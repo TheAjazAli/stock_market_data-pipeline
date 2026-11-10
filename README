@@ -1,12 +1,25 @@
 # Stock Market Data Engineering Pipeline
 
-<text></text>
+An end-to-end data engineering project that builds a daily stock market data pipeline for Indian stock exchanges (NSE/BSE). It extracts historical stock data, validates it, stores it in PostgreSQL, and is being extended into an automated, cloud-based pipeline on AWS.
 
-**Status:** 🚧 Work in Progress
+The project is developed incrementally, starting with a local environment and gradually moving towards cloud deployment.
 
-An end-to-end data engineering project designed to build a daily stock market data pipeline for Indian stock exchanges (NSE/BSE). The project focuses on extracting historical stock market data, validating it, storing it in PostgreSQL, and eventually building a cloud-based automated data pipeline using AWS.
+> 🚧 **Status:** Work in progress. Phases 1–3 are complete, Phase 4 is in progress, and AWS deployment, automation, and dashboards are planned.
 
-The pipeline is being developed incrementally, starting with a local environment and gradually moving towards cloud deployment.
+---
+
+## Table of Contents
+
+- [Project Objectives](#project-objectives)
+- [Technology Stack](#technology-stack)
+- [Architecture](#architecture)
+- [Project Progress](#project-progress)
+- [Roadmap](#roadmap)
+- [Getting Started](#getting-started)
+- [Important Notes](#important-notes)
+- [Project Goal](#project-goal)
+
+---
 
 ## Project Objectives
 
@@ -18,6 +31,8 @@ The pipeline is being developed incrementally, starting with a local environment
 - Integrate AWS services for cloud-based storage and processing.
 - Build analytical dashboards using Metabase.
 - Implement logging, monitoring, backup, and data quality checks.
+
+---
 
 ## Technology Stack
 
@@ -37,11 +52,60 @@ The pipeline is being developed incrementally, starting with a local environment
 | Visualization | Metabase |
 | Version Control | Git, GitHub |
 
-*Technologies listed for future phases are planned integrations, not necessarily implemented yet.*
+> **Note:** Technologies for future phases are planned integrations and are not necessarily implemented yet.
 
-## Current Project Progress
+---
 
-### Phase 1: Data Extraction — Completed
+## Architecture
+
+```text
+Yahoo Finance
+     |
+     v
+Python Data Extraction
+     |
+     v
+Raw CSV + JSON Metadata
+     |
+     v
+Data Validation
+     |
+     v
+PostgreSQL Staging Table
+     |
+     v
+Normalized Database
+     |
+     v
+Data Processing & Optimization
+     |
+     v
+AWS S3 + Lambda + RDS
+     |
+     v
+CloudWatch Monitoring
+     |
+     v
+Metabase Dashboards
+```
+
+---
+
+## Project Progress
+
+| Phase | Description | Status |
+|---|---|---|
+| 1 | Data Extraction | ✅ Completed |
+| 2 | Data Validation | ✅ Completed |
+| 3 | PostgreSQL Data Loading | ✅ Completed |
+| 4 | Database Design | 🚧 In Progress |
+| 5 | ETL Pipeline Improvements | 📅 Planned |
+| 6 | Database Optimization | 📅 Planned |
+| 7 | AWS Cloud Integration | 📅 Planned |
+| 8 | Monitoring and Automation | 📅 Planned |
+| 9 | Data Visualization | 📅 Planned |
+
+### Phase 1: Data Extraction ✅
 
 - Integrated Yahoo Finance using the `yfinance` Python library.
 - Extracted historical stock market data.
@@ -49,7 +113,7 @@ The pipeline is being developed incrementally, starting with a local environment
 - Generated CSV files containing OHLCV data.
 - Generated JSON metadata containing extraction details.
 
-### Phase 2: Data Validation — Completed
+### Phase 2: Data Validation ✅
 
 - Checked column names and data types.
 - Identified missing values.
@@ -57,7 +121,7 @@ The pipeline is being developed incrementally, starting with a local environment
 - Validated price-related values.
 - Checked whether High is greater than or equal to Low.
 
-### Phase 3: PostgreSQL Data Loading — Completed
+### Phase 3: PostgreSQL Data Loading ✅
 
 - Installed and configured PostgreSQL locally.
 - Created the `stock_market_db` database.
@@ -67,7 +131,7 @@ The pipeline is being developed incrementally, starting with a local environment
 - Developed a Python loader to insert stock market data.
 - Implemented conflict handling using PostgreSQL `ON CONFLICT` for repeatable loads.
 
-### Phase 4: Database Design — In Progress
+### Phase 4: Database Design 🚧
 
 Planned activities:
 
@@ -80,7 +144,9 @@ Planned activities:
 - Add indexes and optimize database queries.
 - Implement database migrations using Alembic.
 
-## Upcoming Development Roadmap
+---
+
+## Roadmap
 
 ### Phase 5: ETL Pipeline Improvements
 
@@ -120,38 +186,57 @@ Planned activities:
 - Visualize historical prices and trading volumes.
 - Analyze daily and historical stock performance.
 
-## High-Level Architecture
+---
 
-```text
-Yahoo Finance
-     |
-     v
-Python Data Extraction
-     |
-     v
-Raw CSV + JSON Metadata
-     |
-     v
-Data Validation
-     |
-     v
-PostgreSQL Staging Table
-     |
-     v
-Normalized Database
-     |
-     v
-Data Processing & Optimization
-     |
-     v
-AWS S3 + Lambda + RDS
-     |
-     v
-CloudWatch Monitoring
-     |
-     v
-Metabase Dashboards
+## Getting Started
+
+> This section is a template. Update the commands and file names to match your repository.
+
+### Prerequisites
+
+- Python 3.x
+- PostgreSQL (running locally)
+- Git
+
+### Setup
+
+```bash
+# Clone the repository
+git clone <your-repo-url>
+cd <your-repo-name>
+
+# Create and activate a virtual environment
+python -m venv venv
+source venv/bin/activate      # Windows: venv\Scripts\activate
+
+# Install dependencies
+pip install -r requirements.txt
 ```
+
+### Configuration
+
+Create a `.env` file in the project root with your database credentials (never commit this file):
+
+```env
+DB_HOST=localhost
+DB_PORT=5432
+DB_NAME=stock_market_db
+DB_USER=your_username
+DB_PASSWORD=your_password
+```
+
+### Usage
+
+```bash
+# Extract data (replace with your actual script names)
+python extract.py
+
+# Load data into PostgreSQL
+python load.py
+```
+
+---
+
 ## Important Notes
 
 - This is an ongoing learning and development project.
@@ -159,6 +244,8 @@ Metabase Dashboards
 - Yahoo Finance through `yfinance` is an unofficial data-source integration.
 - AWS deployment, automation, and dashboards are planned but not yet completed.
 - Project features and architecture may evolve during development.
+
+---
 
 ## Project Goal
 
